@@ -1,17 +1,17 @@
-FROM mhart/alpine-node:8
+FROM arm32v7/node:8
 
-# inspired by https://github.com/MehrCurry/docker-iobroker
+# inspired by https://github.com/Locke/docker-iobroker
+MAINTAINER Jakob Westhoff <jakob@westhoffswelt.de>
 
-MAINTAINER André Wolski <andre@dena-design.de>
+RUN apt-get install bash python build-base
 
-RUN apk add --no-cache bash python build-base
-
-RUN mkdir -p /opt/iobroker/
-WORKDIR /opt/iobroker/
-RUN npm install iobroker --unsafe-perm && echo $(hostname) > .install_host
-ADD scripts/run.sh run.sh
+RUN mkdir -p /var/lib/iobroker/
+WORKDIR /var/lib/iobroker/
+RUN npm install iobroker --unsafe-perm && \
+    echo $(hostname) > .install_host
+ADD Support/run.sh run.sh
 RUN chmod +x run.sh
-VOLUME /opt/iobroker/
+VOLUME /var/lib/iobroker/
 
 EXPOSE 8081
-CMD /opt/iobroker/run.sh
+CMD /var/lib/iobroker/run.sh
