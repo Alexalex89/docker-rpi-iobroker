@@ -2,32 +2,26 @@
 
 ## Usage
 
-### On mac (or any computer really):
+### Prerequisites
 
-- Insert rasp pi sd card into mac
-- `brew install pv ssh-copy-id`
-- `git clone https://github.com/hypriot/flash`
-- `cd flash/Darwin`
-- `./flash https://github.com/hypriot/image-builder-rpi/releases/download/v1.1.1/hypriotos-rpi-v1.1.1.img.zip` (or latest release)
-- When complete, install sd card into rpi and power on
-- `ssh-copy-id -i .ssh/id_rsa.pub pirate@black-pearl.local` (default password is hypriot)
-- Disable password logins: `PasswordAuthentication no` in /etc/ssh/sshd_config
+On order to execute the image you need a docker setup on your RPi. The easiest
+way to archieve this is to utilize [hypriot](https://blog.hypriot.com/getting-started-with-docker-on-your-arm-device/).
 
-Note: You may have to enable password logins on your mac os client temporarily to complete these steps.
-- `systemctl restart ssh.service`
 
-### On rpi:
+### Installation on RPi:
 
-- `cd /opt`
-- `sudo git clone https://github.com/jakobwesthoff/docker-rpi-iobroker iobroker`
-- `sudo cp /opt/iobroker/Init/iobroker.service /etc/systemd/system/`
-- `sudo systemctl enable /etc/systemd/system/iobroker.service`
-- `docker pull jakobwesthoff/rpi-iobroker:latest` (For download and extract progress)
-- `sudo systemctl start iobroker.service`
+```shell
+cd /opt
+sudo git clone https://github.com/jakobwesthoff/docker-rpi-iobroker iobroker
+sudo cp /opt/iobroker/Init/iobroker.service /etc/systemd/system/
+sudo systemctl enable /etc/systemd/system/iobroker.service
+docker pull jakobwesthoff/rpi-iobroker:latest
+sudo systemctl start iobroker.service`
+```
 
-### On mac:
+### Open Admin interface:
 
-- Visit 'http://black-pearl.local:8080' with your browser
+- Visit 'http://black-pearl.local:8081' with your browser
 
 ## iobroker Image Upgrade
 
@@ -35,5 +29,5 @@ Note: You may have to enable password logins on your mac os client temporarily t
 - `sudo systemctl stop iobroker.service`
 - `sudo systemctl start iobroker.service`
 
-## Building
+## Building image locally
 - `docker build -t jakobwesthoff/rpi-iobroker:latest .`
