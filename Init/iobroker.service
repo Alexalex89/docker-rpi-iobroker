@@ -1,0 +1,22 @@
+[Unit]
+Description=IoBroker
+After=docker.service
+BindsTo=docker.service
+
+[Service]
+TimeoutStartSec=0
+TimeoutStopSec=30
+Restart=always
+RestartSec=10
+
+WorkingDirectory=/opt/iobroker
+
+ExecStartPre=-/usr/local/bin/docker-compose kill iobroker
+ExecStartPre=-/usr/local/bin/docker-compose rm -f iobroker
+
+ExecStart=/usr/local/bin/docker-compose up --force-recreate iobroker
+
+ExecStop=/usr/local/bin/docker-compose stop iobroker
+
+[Install]
+WantedBy=multi-user.target
