@@ -1,0 +1,6 @@
+version: '2'
+services:
+  iobroker:
+    image: jakobwesthoff/rpi-iobroker
+    container_name: iobroker
+    network_mode: host
