@@ -16,7 +16,7 @@ sudo git clone https://github.com/jakobwesthoff/docker-rpi-iobroker iobroker
 sudo cp /opt/iobroker/Init/iobroker.service /etc/systemd/system/
 sudo systemctl enable /etc/systemd/system/iobroker.service
 docker pull jakobwesthoff/rpi-iobroker:latest
-sudo systemctl start iobroker.service`
+sudo systemctl start iobroker.service
 ```
 
 ### Open Admin interface:
