@@ -4,3 +4,8 @@ services:
     image: jakobwesthoff/rpi-iobroker
     container_name: iobroker
     network_mode: host
+    volumes:
+      - iobroker:/var/lib/iobroker
+volumes:
+  iobroker:
+    driver: local
