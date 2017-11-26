@@ -5,7 +5,7 @@ services:
     container_name: iobroker
     network_mode: host
     volumes:
-      - iobroker:/var/lib/iobroker
+      - iobroker:/opt/iobroker
 volumes:
   iobroker:
     driver: local

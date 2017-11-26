@@ -1,12 +1,12 @@
-FROM resin/raspberrypi3-node:8
+FROM resin/raspberrypi3-node:6
 
 # inspired by https://github.com/Locke/docker-iobroker
 MAINTAINER Jakob Westhoff <jakob@westhoffswelt.de>
 
 RUN [ "cross-build-start" ]
 
-RUN mkdir -p /var/lib/iobroker/
-WORKDIR /var/lib/iobroker/
+RUN mkdir -p /opt/iobroker/ && chmod 777 /opt/iobroker
+WORKDIR /opt/iobroker/
 
 ADD Support/run.sh run.sh
 
@@ -16,7 +16,7 @@ RUN npm install iobroker --unsafe-perm && \
 
 RUN [ "cross-build-end" ]
 
-VOLUME /var/lib/iobroker/
+VOLUME /opt/iobroker/
 EXPOSE 8081
 
-CMD /var/lib/iobroker/run.sh
+CMD /opt/iobroker/run.sh
