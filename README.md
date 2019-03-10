@@ -19,7 +19,7 @@ docker build -t docker-rpi-iobroker:latest .
 
 ### Pull image from DockerHub
 
-- `docker push alexalex89/docker-rpi-iobroker:latest`
+- `docker pull alexalex89/docker-rpi-iobroker:latest`
 
 ### Run container
 
