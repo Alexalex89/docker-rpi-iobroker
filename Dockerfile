@@ -1,17 +1,18 @@
-FROM resin/raspberrypi3-node:6
+FROM balenalib/raspberry-pi-node:8-latest
 
-# inspired by https://github.com/Locke/docker-iobroker
-MAINTAINER Jakob Westhoff <jakob@westhoffswelt.de>
+LABEL maintainer="alexander@alexandrowitz.de"
 
 RUN [ "cross-build-start" ]
 
-RUN mkdir -p /opt/iobroker/ && chmod 777 /opt/iobroker
-WORKDIR /opt/iobroker/
+RUN apt-get update && apt-get install -y curl python2.7 build-essential libavahi-compat-libdnssd-dev libudev-dev libpam0g-dev && \
+        rm -rf /var/lib/apt/lists/* && \
+        ln -s /usr/bin/python2.7 /usr/bin/python && \
+        curl -sL https://raw.githubusercontent.com/ioBroker/ioBroker/stable-installer/installer.sh | bash -
 
+WORKDIR /opt/iobroker/
 ADD Support/run.sh run.sh
 
-RUN npm install iobroker --unsafe-perm && \
-    echo $(hostname) > .install_host && \
+RUN echo $(hostname) > .install_host && \
     chmod +x run.sh
 
 RUN [ "cross-build-end" ]
