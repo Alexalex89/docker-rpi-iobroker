@@ -1,10 +1,10 @@
 # Raspberry Pi 3 ioBroker Docker Container
 
+A simple ioBroker image for Raspberry Pi 3 using node 8. Work in progress.
+
+Feedback is welcome!
+
 ## Usage
-
-### Prerequisites
-    On order to execute the image you need a docker setup on your RPi. The easiest way to archieve this is to utilize [hypriot](https://blog.hypriot.com/getting-started-with-docker-on-your-arm-device/).
-
 
 ### 1a. Build the image yourself:
     mkdir /home/user/docker-rpi-iobroker
@@ -18,7 +18,7 @@
 ### 2. Run container
     docker run -d --name=iobroker --network=host --restart=unless-stopped alexalex89/docker-rpi-iobroker:latest
 
-### 3. Open Admin interface:
+### 3. Open Admin interface
     Visit 'http://<my-server-ip>:8081' with your browser
 
 Thanks to jakobwesthoff and Locke for the base images!
