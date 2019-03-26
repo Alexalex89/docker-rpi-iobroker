@@ -26,7 +26,7 @@ alexalex89/docker-rpi-iobroker:latest
 
 ### 2a. Run container with persistent volume
 Create a volume to persist your configurations.   
-You may choose any local path you like.
+You may choose any local path you like. (In this example we chose `/home/pi/iobroker` as folder)
 ```
 docker volume create --driver local \
 --opt type=none \
