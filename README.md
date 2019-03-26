@@ -17,7 +17,7 @@ Feedback is welcome!
 
 ### 2. Create a Volume
 Create a Volume to persist your configurations.   
-You the path as you like.
+You may choose a path as you like.
 ```
 docker volume create --driver local \
 --opt type=none \
