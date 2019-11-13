@@ -1,4 +1,4 @@
-FROM balenalib/raspberry-pi-node:8-latest
+FROM balenalib/raspberry-pi-node:10-latest
 
 LABEL maintainer="alexander@alexandrowitz.de"
 
